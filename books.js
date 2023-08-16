@@ -26,19 +26,23 @@ addBookToLibrary(book2);
 
 console.log(myLibrary);
 
-myLibrary.forEach(book => {
-    let div = document.createElement('div');
-    div.classList.add("book");
-    let bookInfo = book.info().split(", ");
-    bookInfo.forEach(info => {
-        let para = document.createElement('p');
-        para.innerHTML = info;
-        div.appendChild(para);
+function refresh() {
+    content.innerHTML = "";
+    myLibrary.forEach(book => {
+        let div = document.createElement('div');
+        div.classList.add("book");
+        let bookInfo = book.info().split(", ");
+        bookInfo.forEach(info => {
+            let para = document.createElement('p');
+            para.innerHTML = info;
+            div.appendChild(para);
+        });
+        content.appendChild(div);
+        console.log(div.innerHTML);
+        console.log(bookInfo);
     });
-    content.appendChild(div);
-    console.log(div.innerHTML);
-    console.log(bookInfo);
-});
+}
+
 
 // let div = document.createElement('div');
 // div.classList.add("book");
@@ -52,14 +56,15 @@ const outputBox = document.querySelector("output");
 const selectEl = addBook.querySelector("select");
 const confirmBtn = addBook.querySelector("#confirmBtn");
 
-// "Show the dialog" button opens the <dialog> modally
+const title = document.querySelector("#title");
+const author = document.querySelector("#author");
+const pages = document.querySelector("#pages");
+const bookStatus = document.querySelector("#status");
+
+let createnew;
+
 showButton.addEventListener("click", () => {
     addBook.showModal();
-});
-
-// "Favorite animal" input sets the value of the submit button
-selectEl.addEventListener("change", (e) => {
-  confirmBtn.value = selectEl.value;
 });
 
 // "Cancel" button closes the dialog without submitting because of [formmethod="dialog"], triggering a close event.
@@ -73,5 +78,13 @@ addBook.addEventListener("close", (e) => {
 // Prevent the "confirm" button from the default behavior of submitting the form, and close the dialog with the `close()` method, which triggers the "close" event.
 confirmBtn.addEventListener("click", (event) => {
   event.preventDefault(); // We don't want to submit this fake form
-  addBook.close(selectEl.value); // Have to send the select box value here.
+  createnew = [title.value, author.value, pages.value, bookStatus.value];
+  let newbook = new Book(createnew[0], createnew[1], createnew[2], createnew[3]);
+  addBookToLibrary(newbook);
+  console.log(createnew);
+  console.log(myLibrary);
+  refresh();
+  addBook.close();
 });
+
+refresh();
