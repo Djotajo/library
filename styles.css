@@ -1,0 +1,39 @@
+body {
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+}
+
+header {
+    background-color: aquamarine;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    padding: 1vh;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 300px));
+    grid-template-rows: repeat(auto-fit, 200px);
+    gap: 1vh 1vw;
+    padding: 1vh 1vw;
+}
+
+.book {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: bisque;
+    box-shadow: 10px 10px 8px #888888;
+}
+
+.book > :nth-child(1) {
+    font-weight: bold;
+    font-size: 1vw;
+}

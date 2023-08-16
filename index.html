@@ -3,9 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Library</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="books.js" defer></script>
 </head>
 <body>
-    
+    <header>
+        <h1>Library</h1>
+    </header>
+    <main>
+        <div class="sidebar">
+            <dialog id="addBook">
+                <form>
+                  <p>
+                    <label>
+                      Title
+                        <input type="text">
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      Author
+                        <input type="text">
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      Pages
+                        <input type="number">
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      Status
+                      <select>
+                        <option value="default">Choose…</option>
+                        <option>read</option>
+                        <option>not read yet</option>
+                      </select>
+                    </label>
+                  </p>
+                  <div>
+                    <button value="cancel" formmethod="dialog">Cancel</button>
+                    <button id="confirmBtn" value="default">Confirm</button>
+                  </div>
+                </form>
+              </dialog>
+              <p>
+                <button id="showDialog">Add new book</button>
+              </p>
+              <output></output>
+        </div>
+        <div class="content">
+
+        </div>
+
+    </main>
 </body>
 </html>
