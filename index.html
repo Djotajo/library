@@ -1,57 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library</title>
-    <link rel="stylesheet" href="normalize.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="styles.css" />
     <script src="books.js" defer></script>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Library</h1>
+      <h1>Library</h1>
     </header>
     <main>
-        <div class="sidebar">
-            <dialog id="addBook">
-                <form id="myForm">
-                  <p>
-                    <label for="title">Title</label>
-                    <input type="text" size="30" id="title" name="title" required>
-                  </p>
-                  <p>
-                    <label for="author">Author</label>
-                    <input type="text" size="30" id="author" name="author" required>
-                  </p>
-                  <p>
-                    <label for="pages">Pages</label>
-                    <input type="number" size="30" id="pages" name="pages" required>
-                  </p>
-                  <p>
-                    <label for="status">
-                      Status
-                      <select id="status" name="status" required>
-                        <option value="" disabled selected>Choose…</option>
-                        <option>read</option>
-                        <option>not read yet</option>
-                      </select>
-                    </label>
-                  </p>
-                  <div>
-                    <button id="closeBtn" value="cancel" formmethod="dialog" type="button">Cancel</button>
-                    <button id="confirmBtn" value="default" formmethod="dialog">Confirm</button>
-                  </div>
-                </form>
-              </dialog>
-              <p>
-                <label for="showDialog" id="showDialogLabel"><button id="showDialog" hidden>Add new book</button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>plus-thick</title><path d="M20 14H14V20H10V14H4V10H10V4H14V10H20V14Z" /></svg></label>
-              </p>
-        </div>
-        <div class="content">
-
-        </div>
-
+      <div class="sidebar">
+        <dialog id="addBook">
+          <form id="myForm">
+            <p>
+              <label for="title">Title</label>
+              <input type="text" size="30" id="title" name="title" required />
+            </p>
+            <p>
+              <label for="author">Author</label>
+              <input type="text" size="30" id="author" name="author" required />
+            </p>
+            <p>
+              <label for="pages">Pages</label>
+              <input type="number" size="30" id="pages" name="pages" required />
+            </p>
+            <p>
+              <label for="status">
+                Status
+                <select id="status" name="status" required>
+                  <option value="" disabled selected>Choose…</option>
+                  <option>read</option>
+                  <option>not read yet</option>
+                </select>
+              </label>
+            </p>
+            <div>
+              <button
+                id="closeBtn"
+                value="cancel"
+                formmethod="dialog"
+                type="button"
+              >
+                Cancel
+              </button>
+              <button id="confirmBtn" value="default" formmethod="dialog">
+                Confirm
+              </button>
+            </div>
+          </form>
+        </dialog>
+        <p>
+          <label for="showDialog" id="showDialogLabel"
+            ><button id="showDialog" hidden>Add new book</button
+            ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <title>plus-thick</title>
+              <path d="M20 14H14V20H10V14H4V10H10V4H14V10H20V14Z" />
+            </svg>
+          </label>
+        </p>
+      </div>
+      <div class="content"></div>
     </main>
-</body>
+  </body>
 </html>
