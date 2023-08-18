@@ -31,11 +31,17 @@ main {
   align-items: center;
   background-color: bisque;
   box-shadow: 10px 10px 8px #888888;
+  gap: 1vh;
 }
 
 .book > :nth-child(1) {
   font-weight: bold;
   font-size: 1vw;
+}
+
+.book p {
+  margin: 0;
+  padding: 0;
 }
 
 form > p {

@@ -2,6 +2,8 @@ const myLibrary = [];
 
 const content = document.querySelector(".content");
 
+const myForm = document.querySelector("#myForm");
+
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
@@ -16,13 +18,11 @@ function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
-const book1 = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet");
-const book2 = new Book("LOTR", "J.R.R. Tolkien", 425, "read");
+const book1 = new Book("The Hobbit", "J.R.R. Tolkien", 295, "Not read");
+const book2 = new Book("LOTR", "J.R.R. Tolkien", 425, "Read");
 
 addBookToLibrary(book1);
 addBookToLibrary(book2);
-
-console.log(myLibrary);
 
 function refresh() {
   content.innerHTML = "";
@@ -30,10 +30,27 @@ function refresh() {
     const div = document.createElement("div");
     div.classList.add("book");
     const bookInfo = book.info().split(", ");
-    bookInfo.forEach((info) => {
+    bookInfo.splice(0, 2).forEach((info) => {
       const para = document.createElement("p");
       para.innerHTML = info;
       div.appendChild(para);
+    });
+    const readBook = document.createElement("button");
+    if (book.read === "Read") {
+      readBook.innerHTML = "Read";
+    } else if (book.read === "Not read") {
+      readBook.innerHTML = "Not read";
+    }
+    div.appendChild(readBook);
+    readBook.addEventListener("click", () => {
+      if (book.read === "Read") {
+        book.read = "Not read";
+        refresh();
+        // readBook.innerHTML = "Not read";
+      } else if (book.read === "Not read") {
+        book.read = "Read";
+        refresh();
+      }
     });
     const removeItem = document.createElement("button");
     removeItem.innerHTML = "Remove";
@@ -41,11 +58,8 @@ function refresh() {
     removeItem.addEventListener("click", () => {
       myLibrary.splice(myLibrary.indexOf(book), 1);
       refresh();
-      console.log(myLibrary);
     });
     content.appendChild(div);
-    console.log(div.innerHTML);
-    console.log(bookInfo);
   });
 }
 
@@ -90,8 +104,6 @@ confirmBtn.addEventListener("click", (event) => {
       (book) => book.title === newbook.title
     );
     addBookToLibrary(newbook);
-    console.log(createnew);
-    console.log(newbook.number);
     refresh();
     addBook.close();
   }
@@ -101,7 +113,3 @@ confirmBtn.addEventListener("click", (event) => {
 refresh();
 
 document.getElementById("myForm").checkValidity();
-
-console.log(myLibrary);
-
-const opa = document.querySelector("#title");
