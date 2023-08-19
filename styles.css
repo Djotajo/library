@@ -2,13 +2,27 @@ body {
   display: grid;
   grid-template-rows: 1fr 5fr;
   height: 100vh;
+  background-color: #cdfaff;
 }
 
 header {
-  background-color: #cdfaff;
-  display: grid;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
+}
+
+header > h1 {
+  margin-bottom: 0;
+}
+
+header > div {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  gap: 1vw;
 }
 
 main {
@@ -101,4 +115,14 @@ form {
 #showDialogLabel {
   display: flex;
   justify-content: center;
+}
+
+header p {
+  margin: 0;
+  padding: 0;
+}
+
+#githubLogo {
+  width: 1.5em;
+  height: auto;
 }
