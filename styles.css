@@ -5,7 +5,7 @@ body {
 }
 
 header {
-  background-color: aquamarine;
+  background-color: #cdfaff;
   display: grid;
   justify-content: center;
   align-items: center;
@@ -19,9 +19,10 @@ main {
 .content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 300px));
-  grid-template-rows: repeat(auto-fit, 200px);
+  grid-template-rows: repeat(auto-fit, 300px);
   gap: 1vw;
   padding: 1vw;
+  background-color: #d2cdff;
 }
 
 .book {
@@ -32,16 +33,37 @@ main {
   background-color: bisque;
   box-shadow: 10px 10px 8px #888888;
   gap: 1vh;
+  padding: 1vh;
 }
 
 .book > :nth-child(1) {
   font-weight: bold;
-  font-size: 1vw;
+  font-size: calc(1rem + ((1vw - 9.68px) * 0.6944));
+  text-align: center;
+  margin-bottom: auto;
+}
+
+.book > :nth-child(2) {
+  margin-top: auto;
+  font-weight: bold;
 }
 
 .book p {
   margin: 0;
   padding: 0;
+}
+
+.book button:hover {
+  background-color: lightslategray;
+  transition: 0.7s;
+}
+
+.book button {
+  border-radius: 10px;
+  background-color: #cdfaff;
+  border: none;
+  padding: 1vh;
+  box-shadow: 0px 0px 2px 2px #d2cdff;
 }
 
 form > p {
@@ -50,7 +72,6 @@ form > p {
   display: grid;
   gap: 5px;
   justify-items: center;
-  /* grid-template-columns: 1fr 5fr; */
 }
 
 form > div {
@@ -64,8 +85,6 @@ form {
   grid-template-rows: repeat(5 1fr);
   gap: 3vh;
   width: clamp(100px, 20%, 900px);
-  /* align-items: center;
-    justify-items: center; */
 }
 
 .sidebar {

@@ -10,7 +10,7 @@ function Book(title, author, pages, read) {
   this.pages = pages;
   this.read = read;
   this.info = function () {
-    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
+    return `${this.title}, by ${this.author}, ${this.pages} pages, ${this.read}`;
   };
 }
 
@@ -18,11 +18,15 @@ function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
-const book1 = new Book("The Hobbit", "J.R.R. Tolkien", 295, "Not read");
-const book2 = new Book("LOTR", "J.R.R. Tolkien", 425, "Read");
-
-addBookToLibrary(book1);
-addBookToLibrary(book2);
+function readButton(book) {
+  const readBook = document.createElement("button");
+  if (book.read === "Read") {
+    readBook.innerHTML = "Read";
+  } else if (book.read === "Not read") {
+    readBook.innerHTML = "Not read";
+  }
+  return readBook;
+}
 
 function refresh() {
   content.innerHTML = "";
@@ -30,23 +34,18 @@ function refresh() {
     const div = document.createElement("div");
     div.classList.add("book");
     const bookInfo = book.info().split(", ");
-    bookInfo.splice(0, 2).forEach((info) => {
+    bookInfo.splice(0, 3).forEach((info) => {
       const para = document.createElement("p");
       para.innerHTML = info;
       div.appendChild(para);
     });
-    const readBook = document.createElement("button");
-    if (book.read === "Read") {
-      readBook.innerHTML = "Read";
-    } else if (book.read === "Not read") {
-      readBook.innerHTML = "Not read";
-    }
+    const readBook = readButton(book);
     div.appendChild(readBook);
+
     readBook.addEventListener("click", () => {
       if (book.read === "Read") {
         book.read = "Not read";
         refresh();
-        // readBook.innerHTML = "Not read";
       } else if (book.read === "Not read") {
         book.read = "Read";
         refresh();
@@ -92,7 +91,7 @@ confirmBtn.addEventListener("click", (event) => {
   if (!formCheck) {
     document.getElementById("myForm").reportValidity();
   } else {
-    event.preventDefault(); // We don't want to submit this fake form
+    event.preventDefault();
     createnew = [title.value, author.value, pages.value, bookStatus.value];
     const newbook = new Book(
       createnew[0],
